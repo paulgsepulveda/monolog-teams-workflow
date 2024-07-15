@@ -1,2 +1,5 @@
 vendor
 logs
+/.idea
+/.phpunit.cache
+phpunit.xml
