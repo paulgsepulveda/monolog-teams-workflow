@@ -14,7 +14,7 @@ $ composer require paulgsepulveda/monolog-teams-workflow
 * Create a new Workflow using the template *Post to a channel when a webhook request is received*.
 * The JSON formatting assumes that the *Select an output from previous steps* field will remain set to `attachments`
 * The JSON formatting assumes that the *Adaptive Card* field under **Post your own adaptive card** will remain set to `content`
-* After saving the workflow, the **When a Teams webhook request is received** card will prove the `HTTP POST URL` value to use for the incoming webhook.
+* After saving the workflow, the **When a Teams webhook request is received** card will provide the `HTTP POST URL` value to use for the incoming webhook.
 
 ## Usage
 
