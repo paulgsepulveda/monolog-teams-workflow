@@ -1,5 +1,5 @@
 {
-    "name": "paulgsepulveda/monolog-teams-workflow-webhook",
+    "name": "paulgsepulveda/monolog-teams-workflow",
     "description": "Monolog Handler for sending messages to Microsoft Teams channels using the Workflow webhook",
     "type": "library",
     "require": {
@@ -11,10 +11,24 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Paulgsepulveda\\MonologTeamsWorkflowWebhook\\": "src/"
+            "Paulgsepulveda\\MonologTeamsWorkflow\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Paulgsepulveda\\MonologTeamsWorkflow\\Tests\\": "tests/"
+        }
+    },
+
     "require-dev": {
         "phpunit/phpunit": "^11.2"
+    },
+
+    "scripts": {
+        "phpunit": "phpunit --colors=auto --coverage-text",
+        "watch": "phpunit-watcher watch",
+        "test": [
+            "@phpunit"
+        ]
     }
 }

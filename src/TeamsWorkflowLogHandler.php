@@ -1,6 +1,6 @@
 <?php
 
-namespace Paulgsepulveda\MonologTeamsWorkflowWebhook;
+namespace Paulgsepulveda\MonologTeamsWorkflow;
 
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Handler\AbstractProcessingHandler;
@@ -11,13 +11,18 @@ class TeamsWorkflowLogHandler extends AbstractProcessingHandler
 {
     public function __construct(
         private readonly string $url,
+        string $source_name,
+        string $source_url,
         int|string|Level $level = Level::Debug,
-        bool $bubble = true,
-        FormatterInterface $formatter = null,
+        bool $bubble = true
     ) {
         parent::__construct($level, $bubble);
 
-        $this->setFormatter($formatter ?? new TeamsFormatter());
+        $this->setFormatter(new TeamsFormatter());
+
+        if ($this->formatter instanceof TeamsFormatter) {
+            $this->formatter->setSource($source_name, $source_url);
+        }
     }
 
     protected function write(LogRecord $record): void
@@ -35,31 +40,16 @@ class TeamsWorkflowLogHandler extends AbstractProcessingHandler
             'Content-Length: ' . strlen($json)
         ]);
 
-        curl_exec($ch);
-    }
+        $result = curl_exec($ch);
 
-    private function teamsMessage(LogRecord $record): TeamsMessage
-    {
-        if ($this->formatter instanceof TeamsFormatter) {
-            $data = $record->formatted;
-        } else {
-            $data = [
-                'title' => $record->level->getName() . ': ' . $record->message,
-                'text' => $record->formatted,
-            ];
+        if ($result === false) {
+            var_dump(curl_error($ch));
         }
 
-        $data['themeColor'] = $this->themeColor($record->level);
-
-        return new TeamsMessage($data);
     }
 
-    private function themeColor(Level $level): string
+    private function teamsMessage(LogRecord $record): array
     {
-        return match ($level) {
-            Level::Warning => 'FF8000',
-            Level::Error, Level::Critical, Level::Alert, Level::Emergency => 'FF0000',
-            default => '0080FF',
-        };
+        return $this->formatter->format($record);
     }
 }

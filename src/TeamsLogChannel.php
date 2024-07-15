@@ -1,6 +1,6 @@
 <?php
 
-namespace Paulgsepulveda\MonologTeamsWorkflowWebhook;
+namespace Paulgsepulveda\MonologTeamsWorkflow;
 
 use Monolog\Level;
 use Monolog\Logger;
@@ -10,17 +10,14 @@ class TeamsLogChannel
 {
     public function __invoke(array $config): LoggerInterface
     {
-        $formatter = null;
-        if (isset($config['formatter'])) {
-            $formatter = new $config['formatter']();
-        }
 
         $handlers = [
-            new TeamsLogHandler(
+            new TeamsWorkflowLogHandler(
                 $config['url'],
+                $config['source_name'],
+                $config['source_url'],
                 $config['level'] ?? Level::Debug,
-                true,
-                $formatter,
+                true
             ),
         ];
 
