@@ -40,12 +40,7 @@ class TeamsWorkflowLogHandler extends AbstractProcessingHandler
             'Content-Length: ' . strlen($json)
         ]);
 
-        $result = curl_exec($ch);
-
-        if ($result === false) {
-            var_dump(curl_error($ch));
-        }
-
+        curl_exec($ch);
     }
 
     private function teamsMessage(LogRecord $record): array
