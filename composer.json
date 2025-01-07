@@ -1,5 +1,5 @@
 {
-    "name": "paulgsepulveda/monolog-teams-workflow",
+    "name": "Metamorfer/monolog-teams-workflow",
     "description": "Monolog Handler for sending messages to Microsoft Teams channels using the Workflow webhook",
     "type": "library",
     "require": {
@@ -11,12 +11,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Paulgsepulveda\\MonologTeamsWorkflow\\": "src/"
+            "Metamorfer\\MonologTeamsWorkflow\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Paulgsepulveda\\MonologTeamsWorkflow\\Tests\\": "tests/"
+            "Metamorfer\\MonologTeamsWorkflow\\Tests\\": "tests/"
         }
     },
 

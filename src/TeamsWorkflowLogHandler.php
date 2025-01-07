@@ -1,6 +1,6 @@
 <?php
 
-namespace Paulgsepulveda\MonologTeamsWorkflow;
+namespace Metamorfer\MonologTeamsWorkflow;
 
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Handler\AbstractProcessingHandler;
