@@ -1,6 +1,6 @@
 <?php
 
-namespace Paulgsepulveda\MonologTeamsWorkflow;
+namespace Metamorfer\MonologTeamsWorkflow;
 
 use Monolog\Level;
 use Monolog\Logger;
