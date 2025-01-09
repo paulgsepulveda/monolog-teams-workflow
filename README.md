@@ -2,12 +2,10 @@
 
 Monolog Handler for sending messages to Microsoft Teams channels using Workflow / Power Automate. I put this together based on [monolog-microsoft-teams](https://github.com/cmdisp/monolog-microsoft-teams) after Microsoft retired Office 365 connectors.
 
-This is a fork of the original paulgsepulveda/monolog-teams-workflow repository making it available for PHP version 8.1
-
 ## Install
 
 ```bash
-$ composer require Metamorfer/monolog-teams-workflow
+$ composer require paulgsepulveda/monolog-teams-workflow
 ```
 
 ## Configuring Workflow
@@ -22,7 +20,7 @@ $ composer require Metamorfer/monolog-teams-workflow
 
 ```php
 $logger = new \Monolog\Logger('app');
-$logger->pushHandler(new \Metamorfer\MonologTeamsWorkflow\TeamsWorkflowLogHandler('INCOMING_WEBHOOK_URL', \Monolog\Level::Error));
+$logger->pushHandler(new \Paulgsepulveda\MonologTeamsWorkflow\TeamsWorkflowLogHandler('INCOMING_WEBHOOK_URL', \Monolog\Level::Error));
 
 $logger->error('Error message');
 ```
@@ -36,7 +34,7 @@ Create a [custom channel](https://laravel.com/docs/master/logging#creating-custo
 ```php
 'teams' => [
     'driver' => 'custom',
-    'via' => \Metamorfer\MonologTeamsWorkflow\TeamsLogChannel::class,
+    'via' => \Paulgsepulveda\MonologTeamsWorkflow\TeamsLogChannel::class,
     'level' => 'error',
     'url' => 'INCOMING_WEBHOOK_URL',
     'source_name' => env('APP_NAME'),

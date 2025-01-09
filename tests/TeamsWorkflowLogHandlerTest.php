@@ -1,7 +1,7 @@
 <?php
-namespace Metamorfer\MonologTeamsWorkflow\Tests;
+namespace Paulgsepulveda\MonologTeamsWorkflow\Tests;
 
-use Metamorfer\MonologTeamsWorkflow\TeamsWorkflowLogHandler;
+use Paulgsepulveda\MonologTeamsWorkflow\TeamsWorkflowLogHandler;
 use PHPUnit\Framework\TestCase;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Level;
