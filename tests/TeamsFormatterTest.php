@@ -1,8 +1,8 @@
 <?php
 
-namespace Metamorfer\MonologTeamsWorkflow\Tests;
+namespace Paulgsepulveda\MonologTeamsWorkflow\Tests;
 
-use Metamorfer\MonologTeamsWorkflow\TeamsFormatter;
+use Paulgsepulveda\MonologTeamsWorkflow\TeamsFormatter;
 use Monolog\Formatter\FormatterInterface;
 use PHPUnit\Framework\TestCase;
 
